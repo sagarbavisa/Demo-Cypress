@@ -12,5 +12,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/sagarbavisa/Demo-Cypress.git"
+  },
+  "dependencies": {
+    "cypress": "^12.17.1"
   }
 }
