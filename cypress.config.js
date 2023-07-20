@@ -27,8 +27,8 @@ module.exports = defineConfig({
   e2e: {
     
     baseUrl:"https://parabank.parasoft.com",
-    specPattern:"**/cfabdd.feature",
-  //  specPattern:"cypress/integration/tests/test.js",
+   // specPattern:"**/cfabdd.feature",
+    specPattern:"cypress/integration/tests/test.js",
     chromeWebSecurity:false,
     setupNodeEvents
   },
