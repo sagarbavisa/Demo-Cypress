@@ -38,12 +38,7 @@
     "webpack": "^5.80.0"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": [
-      "C:/Users/sbavisa/CFA_CYPRESS/Chic-Fila/cypress/integration/examples/BDD/cfabdd/cfa_stepdefinition.js",
-      "C:/Users/sbavisa/CFA_CYPRESS/Chic-Fila/cypress/integration/examples/BDD/cfabdd/cfa2_stepdefinition.js"
-      
-    ]
+    "nonGlobalStepDefinitions": true
   },
   "peerDependencies": {
     "@cypress/browserify-preprocessor": "^3.0.1",
