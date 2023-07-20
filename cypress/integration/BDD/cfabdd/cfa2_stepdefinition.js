@@ -1,4 +1,4 @@
-import {Given,When,Then } from "@badeball/cypress-cucumber-preprocessor"
+const { Given, When, Then } = require("@cucumber/cucumber");
 
 Given('User is on STEP Login page',()=>
 {

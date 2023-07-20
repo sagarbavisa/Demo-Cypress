@@ -1,12 +1,12 @@
 Feature: Test Chick-fil-a application
     Scenario:Test create new region
         Given User is on STEP Login page
-        When user Enters Username
-        When user Enters Password
-        When user click on Login button
-        When user click on location user portal WebUi
-        When after succesfull login user click on link Create New Region on widget
-        When user enters Region Name and user clicks on next button
+        When  user Enters Username
+        When  user Enters Password
+        When  user click on Login button
+        When  user click on location user portal WebUi
+        When  after succesfull login user click on link Create New Region on widget
+        When  user enters Region Name and user clicks on next button
         When user navigates to "region details page"
         When user enters Start Date in Region Details page
         When user clicks on Create button

@@ -14,7 +14,46 @@
     "url": "https://github.com/sagarbavisa/Demo-Cypress.git"
   },
   "dependencies": {
+    "@badeball/cypress-configuration": "^6.1.0",
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.1",
+    "@cucumber/cucumber": "^9.1.0",
+    "@cucumber/cucumber-expressions": "^16.1.2",
+    "@cucumber/gherkin": "^26.2.0",
+    "@cucumber/html-formatter": "^20.3.0",
+    "@cucumber/message-streams": "^4.0.1",
+    "@cucumber/messages": "^22.0.0",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "@cucumber/tag-expressions": "^5.0.1",
+    "cypress": "^10.0.0 || ^11.0.0 || ^12.0.0"
+  },
+  "devDependencies": {
+    "@babel/parser": "^7.21.4",
+    "@babel/types": "^7.21.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "@cypress/webpack-preprocessor": "^5.17.0",
     "cypress": "^12.17.1",
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "esbuild": "^0.18.14",
+    "webpack": "^5.80.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": [
+      "C://Users//sbavisa//CFA_CYPRESS//Chic-Fila//cypress//integration//examples//BDD//cfabdd//cfa_stepdefinition.js",
+      "C://Users//sbavisa//CFA_CYPRESS//Chic-Fila//cypress//integration//examples//BDD//cfabdd//cfa2_stepdefinition.js"
+    ]
+  },
+  "peerDependencies": {
+    "@cypress/browserify-preprocessor": "^3.0.1",
+    "cypress": "^10.0.0 || ^11.0.0 || ^12.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@cypress/browserify-preprocessor": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
