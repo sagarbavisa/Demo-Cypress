@@ -40,7 +40,7 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
     "stepDefinitions": [
-      "cypress/integration/BDD/**/cfa_stepdefinition.js"
+      "cypress/integration/BDD/cfabdd/cfa_stepdefinition.js"
     ]
   },
   "peerDependencies": {
