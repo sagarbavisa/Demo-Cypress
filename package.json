@@ -38,7 +38,10 @@
     "webpack": "^5.80.0"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": [
+      "cypress/integration/BDD/**/cfa_stepdefinition.js"
+    ]
   },
   "peerDependencies": {
     "@cypress/browserify-preprocessor": "^3.0.1",
