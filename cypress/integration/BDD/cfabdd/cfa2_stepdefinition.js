@@ -2,7 +2,7 @@ const { Given, When, Then } = require("@cucumber/cucumber");
 
 Given('User is on STEP Login page',()=>
 {
-    cy.visit("https://chick-fil-a-preprod.scloud.stibo.com/")
+    cy.visit("/")
 });
 When('user Enters Username',function()
 {

@@ -26,9 +26,9 @@ module.exports = defineConfig({
   videoUploadOnPasses: true,
   e2e: {
     
-    baseUrl:"https://parabank.parasoft.com",
-   // specPattern:"**/cfabdd.feature",
-    specPattern:"cypress/integration/tests/test.js",
+    baseUrl:"https://chick-fil-a-preprod.scloud.stibo.com",
+    specPattern:"cypress/integration/BDD/cfabdd2.feature",
+    //specPattern:"cypress/integration/tests/test.js",
     chromeWebSecurity:false,
     setupNodeEvents
   },
