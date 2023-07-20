@@ -1,13 +1,6 @@
 /// <reference types = "Cypress" />
 describe('testsuite2', ()=>
 {
-    before('workflow_suite',function()
-    {
-        cy.fixture('logincfa').then(function(logindata)
-        {
-            globalThis.logindata  = logindata
-        })
-    })
     it('testscript1', ()=>
     {
         //Login to CFA step
