@@ -1,5 +1,4 @@
 /// <reference types = "Cypress" />
-import 'cypress-iframe'
 describe('testsuite2', ()=>
 {
     before('workflow_suite',function()
