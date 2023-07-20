@@ -2,7 +2,7 @@ name: Chrome headed
 on: push
 jobs:
   cypress-run:
-    runs-on: windows-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
