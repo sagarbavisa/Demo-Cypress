@@ -11,9 +11,9 @@ context('Login', () => {
     loginPage.typeUsername("sagarb");
     loginPage.typePassword("Sagarb");
     loginPage.clickLogin();
-    // securePage.getMessage().should((actual) => {
-    //   expect(actual).to.have.string("Accounts Overview");
-    // })
+    securePage.getMessage().should((actual) => {
+      expect(actual).to.have.string("Accounts Overview");
+    })
   })
  
 })
