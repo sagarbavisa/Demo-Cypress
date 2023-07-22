@@ -29,13 +29,3 @@ Feature: Test Chick-fil-a application
         When user selects "Assignment start date" for each role
         When user clicks on "Create" button
         Then user should see successful message <pop-up> on dashboard
-   
- 
-
-
-
-
-
-        
-
-    

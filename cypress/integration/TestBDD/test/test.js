@@ -1,4 +1,4 @@
-const { Given, When, Then } = require("@cucumber/cucumber");
+const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor");
 
 Given('User is on STEP Login page',()=>
 {
@@ -205,10 +205,3 @@ Then('user should see successful message <pop-up> on dashboard',function()
    cy.contains("successfully submitted").should('be.visible')
 
 })
-
-
-
-
-
-
-

@@ -1,327 +1,214 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 
-Given("User is on step Login page",()=>
+Given('User is on STEP Login page',()=>
 {
-    Cypress.on('uncaught:exception', (err, runnable, promise) => {
-        if (promise) {
-          return false
-        }
-      })
-    cy.visit("https://navistarfs.riversand.com/")
+    cy.visit("/")
 });
-When('user Enter Username',function()
+When('user Enters Username',function()
 {
-    cy.get("[type='email']").type(Cypress.env('username'))
+    cy.get('#username').type("FIELDOPSTEST");
 });
-When('user Enter Password',function()
+When('user Enters Password',function()
 {
-    cy.get("[type='password']").type(Cypress.env('password'),{ log: false })
+    cy.get('#password').type("FIELDOPSTEST");
 });
-When('user clicks on Login button',function()
+When('user click on Login button',function()
 {
-    cy.contains('Log In').click() 
-     cy.wait(5000)
-     cy.url().should('include',Cypress.env('assert_var'))
+    cy.get('#kc-login').click();
 });
-When('after succesfull login user click on Quick Actions button',function()
+When('user click on location user portal WebUi',function()
 {
-    cy.wait(2000)
-    cy.contains("Quick Actions").click()
+    cy.get("[title='Location User Portal']").click()        
 });
-When('user click on "Vendor Item" and User needs to fill mandatory attributes to create "Vendor Item"',function()
+When('after succesfull login user click on link Create New Region on widget',function()
 {
-    cy.get("#actionItem").contains("Vendor Item").click()
-     cy.wait(17000)
+    cy.contains('Create New Region').click();
 });
-When('user  clicks on "Brand AAIAID" and selects value from the given dropdown "Brand AAIAID"',function()
+When('user enters Region Name and user clicks on next button',function()
 {
-    cy.get("[title='Brand AAIAID']").next().click({force:true})
-    cy.wait(2000)
-    cy.get("[class='p-relative without-select-all-checkbox'] [id='input']").type("A004 ",{force:true})
-    cy.wait(2000)
-    cy.get("[class='not-only-option']").click({force:true})
+  
+    const random_region = Math.random().toString(36).substring(2,12)
+    globalThis.storeregion = random_region
+    cy.get("[class='gwt-TextBox stibo-StateFlow-Unbound-Variable stibo-Value stibo-Value-Text mandatory']").type(String(random_region))
+    cy.contains('Next').click()
 });
-When('user enters some text in "Part Number"',function()
+When('user navigates to "region details page"',function()
 {
-    cy.get("[title='Part Number']").next().next()
-    .find("input")
-    .type("automation Part number3",{force:true})
-});
-When('user  clicks on "Parts Classification" and expand and selects the value from the given dropdown "Parts Classification"',function()
-{
-    cy.get("[title='Parts Classification']").click({force:true})
-     cy.get("[id='classificationSearchBar']").find("[id='input']").type("67520{enter}",{force:true})
-     cy.contains("67520").dblclick({force:true})
-     cy.wait(4000)
-});
-When('user click on Create button',function()
-{
-    cy.get("[id='simpleButton']").contains("Select").click({force:true})
-});
-When('user click on Next Button',function()
-{
-   cy.get("#app").find("#contentViewManager")
-   .find("#wizardManage")
-   .find("#next").find("#simpleButton").eq(1).click({force:true});
-
-   cy.get("#app").shadow().find("#contentViewManager")
-.find("#wizardManage").find("#next")
-.find("#buttonTextBox").eq(1).click({force:true})
-cy.get("[class='action-button-focus dropdownText btn btn-outline-primary m-l-5']").click()
-
-});
-When('user click on "Show me the entity" button',function()
-{
-   cy.get("[title='Show me the entity']").click({force:true})
-});
-When('user click on "Hazardous and Regulatory Compliance" link',function()
-{
-   cy.contains("Hazardous and Regulatory Compliance").click({force:true})
-    cy.wait(7000)
-});
-When('user selects value from the given dropdown Harmonized Tariff Code',function()
-{
-    cy.get("[title='Harmonized Tariff Code (Schedule B)']").next().click({force:true})
-    cy.get("[class='p-relative without-select-all-checkbox']").find("[id='input']").type("0714 ",{force:true})
-    cy.wait(3000)
-
-    cy.get("[class='not-only-option']").click({force:true})
-    cy.wait(3000)
-});
-When('user click on Save Button1',function()
-{
-    cy.get("[class='action-button-focus dropdownText btn btn-success']").click({force:true})
-    cy.wait(2000)
-});
-When('user click on Summary tab',function()
-{
-    cy.get("[id='tab-summary']").click()
-});
-When('user click on "Required Attributes Validation" link',function()
-{
-    cy.get("[title='Required Attributes Validation']").click()
-cy.wait(9000)
-});
-When('user  clicks on "Country of Origin Primary " and selects value from the given dropdown "Country of Origin Primary "',function()
-{
-    cy.get("[title='Country of Origin (Primary)']").next().click()
-    cy.get("[class='p-relative without-select-all-checkbox']").find("[id='input']").type("AD",{force:true})
-
-});
-When('user click on Add Button of "Dimensions - Each" attributes',function()
-{
-    
-    cy.get("[class='title sub-title']").click({force:true})
-    cy.get("[class='btn btn-primary m-r-10']").eq(2).click({force:true})
-    cy.wait(1000)
-});
-When('user enters some decimal value in "Merchandising Height"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text']").eq(0).click({force:true}).find("bedrock-attribute").find("input").type('1.1234',{force:true})
-
-});
-When('user enters some decimal value in "Merchandising Length"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text']").eq(1).click({force:true}).find("bedrock-attribute").find("input").type('2.1234',{force:true})
-
-});
-When('user enters some decimal value in "Merchandising Width"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text']").eq(2).click({force:true}).find("bedrock-attribute").find("input").type('3.1234',{force:true})
-
-});
-When('user enters some decimal value in "Shipping Height"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='4']").click({force:true}).find("bedrock-attribute").find("input").type('1.1234',{force:true})
-
-});
-When('user enters some decimal value in "Shipping Length"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='6']").click({force:true}).find("bedrock-attribute").find("input").type('1.1234',{force:true})
-
-});
-When('user enters some decimal value in "Shipping Width"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='8']").click({force:true}).find("bedrock-attribute").find("input").type('1.1234',{force:true})
-    cy.wait(2000)
-
-});
-When('user  clicks on "UOM" and selects value from the given dropdown "UOM"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='9']").click({force:true}).find("bedrock-attribute").contains("CM").click({force:true})
-    cy.wait(2000)
-});
-When('user  clicks on "Package UOM - Each" and selects value from the given dropdown "Package UOM - Each"',function()
-{
-    cy.get("[title='Package UOM - Each']").next().click({force:true})
-cy.wait(2000)
-cy.contains('BX').eq(0).click({force:true})
-
-});
-When('user enters some decimal value in "Quantity of Eaches in Package - Each"',function()
-{
-    cy.get("[id='input-36']").find("input").type("10")
-
-});
-When('user click on Add Button of "Weights - Each" attributes',function()
-{
-    cy.get("[class='btn btn-primary m-r-10']").eq(1).click({force:true})
+    cy.contains('Confirmed').then(function(ext_text)
+            {
+                const conf_text = ext_text.text()
+                expect(conf_text).to.includes('Confirmed')
+            })
+            cy.contains("Your Region has been submitted").should('be.visible')
+  
     
 });
-When('user enters some decimal value in "Dimensional Weight"',function()
+When('user enters Start Date in Region Details page',function()
 {
+    cy.get("[class='gwt-TextBox stibo-Value-ISO-Date stibo-Value mandatory-for-approval mandatory validator-isodate']").click()
 
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='3']").click({force:true}).find("bedrock-attribute").find("input").type('1.1234',{force:true})
-});
-When('user  clicks on "UOM" and selects value from the given dropdown "UOM1"',function()
-{
-    cy.wait(2000)
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='4']").click({force:true}).find("bedrock-attribute").contains("GT").click({force:true})
-});
-When('user enters some decimal value in "Weight"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='5']").click({force:true}).find("bedrock-attribute").find("input").type('3.1234',{force:true})
-});
-When('user  clicks on "Item Container Type" and selects value from the given dropdown "Item Container Type"',function()
-{
-
-cy.get("[title='Item Container Type']").next().click({force:true})
-cy.wait(2000)
-cy.contains("15").click({force:true})
-
-});
-When('user  clicks on "Item Quantity Size" and selects value from the given dropdown "Item Quantity Size" and enter the numeric value',function()
-{
-    cy.get("[aria-labelledby='paper-input-label-34']").type("20")
-
-});
-When('user  clicks on "Item Quantity Size UOM" and selects value from the given dropdown "Item Quantity Size UOM"',function()
-{
-    cy.get("[title='Item Quantity Size UOM']").next().click({force:true})
-    cy.wait(1000)
-    cy.contains("AS").click({force:true})
-    cy.get("[aria-labelledby='paper-input-label-35']").type("30")
-});
-When('user  clicks on "Quantity per Application" and selects value from the given dropdown "Quantity per Application" enter the numeric value',function()
-{
-    cy.get("[title='Quantity per Application Qualifier']").next().click({force:true})
-cy.wait(1000)
-cy.contains("MAX").click({force:true})
-});
-When('user  clicks on "Quantity per Application Qualifier" and selects value from the given dropdown "Quantity per Application Qualifier"',function()
-{
-    cy.contains("MAX").click({force:true})
-});
-When('user  clicks on "Quantity per Application UOM" and selects value from the given dropdown "Quantity per Application UOM"',function()
-{
-    cy.get("[title='Quantity per Application UOM']").click({force:true})
-cy.wait(1000)
-cy.contains("BD").click({force:true})
-});
-When('user enters some decimal value in "Maximum Cases per Pallet Layer"',function()
-{
-    cy.get("[aria-labelledby='paper-input-label-37']").type("100")
-
-});
-When('user enters some decimal value in "Pallet Layer Maximum"',function()
-{
-    cy.get("[aria-labelledby='paper-input-label-38']").type("100")
-
-});
-When('user enters some decimal value in "Navistar Part Number"',function()
-{
-    cy.get("[aria-labelledby='paper-input-label-39']").type("20",{force:true})
-
-});
-When('user enters some text field in "Part Description"',function()
-{
-    cy.get("[aria-labelledby='paper-input-label-40']").type("automation part description",{force:true})
-
-});
-When('user click on Add Button of "Pricing" attributes',function()
-{
-    cy.get("[class='btn btn-primary m-r-10']").eq(0).click({force:true})
-
-});
-When('user  clicks on "Currency Code" and selects value from the given dropdown "Currency Code"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='3']").click({force:true}).find("bedrock-attribute").contains("CAD").click({force:true})
-
-});
-When('user  clicks on "Expiration Date" and selects date from the given dropdown "Expiration Date"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='4']").click({force:true}).find("bedrock-attribute").contains("10").eq(0).click({force:true})
-
-});
-When('user  clicks on "Price" and selects value from the given dropdown "price" enter the decimal value',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='6']").click({force:true}).find("rock-uom").find("input").type('123',{force:true})
-
-});
-When('user  clicks on "Price Break Quantity" and selects value from the given dropdown "Price Break Quantity" enter the integer value',function()
-{
+    cy.get("[class='popupContent']").eq(1).contains("1").eq(0).click({force:true})
    
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='5']").click({force:true}).find("rock-uom").find("input").type('10.03',{force:true})
+    cy.get("input[class='gwt-TextBox stibo-Value-ISO-Date stibo-Value validator-isodate']").click({force:true})
+    cy.get("[class='html-face']").eq(2).click({force:true})
+    cy.get("[class='html-face']").eq(2).click({force:true})
+    cy.get("[class='html-face']").eq(2).click({force:true})
+    cy.get("[class='html-face']").eq(2).click({force:true})
     cy.wait(2000)
-
+    cy.get("[class='popupContent']").eq(1).contains("4").eq(0).click({force:true})
+  //  cy.get("body > div:nth-child(12) > div:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child("+String(globalThis.randomnumber3)+") > td:nth-child("+String(globalThis.randomnumber3)+") > div:nth-child(1)").click()
 });
-When('user  selects value from the given dropdown "Price Break Quantity UOM"',function()
+When('user clicks on Create button',function()
 {
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='7']").click({force:true}).find("bedrock-attribute").contains("15").click({force:true})
-
+        cy.get("[class='material-icons portal-alert-popup-close-box__button']").click()
+        cy.get('.SubmitButton > div > .text').click()
+        cy.get("div.portal-alert-popup-content-details__details div.gwt-HTML").then(function(ext_text)
+        {
+            const conf_text1 = ext_text.text()
+            expect(conf_text1).to.includes('Save is complete')
+        })
+        cy.get("[class='material-icons portal-alert-popup-close-box__button']").click()
 });
-When('user  clicks on "Price Sheet Level Effective Date" and selects date from the given dropdown "Price Sheet Level Effective Date"',function()
+Then('confirmation pop-up is displayed',function()
 {
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='8']").click({force:true}).find("bedrock-attribute").contains("10").eq(0).click({force:true})
-
+        cy.get("div.portal-alert-popup-content-details__details div.gwt-HTML").then(function(extTest)
+        {
+            const extval = extTest.text()
+            expect(extval).to.includes("Item was successfully submitted.")
+        })
 });
-When('user enters some decimal value in "Price Sheet Number"',function()
-{
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='9']").click({force:true}).find("bedrock-attribute").find("input").type("234",{force:true})
 
-});
-When('user  clicks on "Price Type" and selects date from the given dropdown "Price Type"',function()
+Given('User is on location user portal page',function()
 {
+    cy.visit("https://chick-fil-a-preprod.scloud.stibo.com/")
+    cy.get('#username').type("FIELDOPSTEST");
+    cy.get('#password').type("FIELDOPSTEST");
+    cy.get('#kc-login').click();
+    cy.get("[title='Location User Portal']").click()
+    cy.get("div[id='Create_Area_Support_Team'] div div[class='status-selector__wrapper dashboard-widget-inner'] div[class='status-selector__content with-assigneePanel with-initiatePanel with-2-elements'] div[class='status-selector__assignees'] div[title='Show all items assigned to me or any group I am a member of'] div i[class='material-icons']").click()
+});
+When('user click on link "Create New Area Support Team" on widget',function()
+{
+    cy.contains('Create New Area Support Team').click()
+});
+When('user click on node in text field of "Parent Region Node" to select region names',function()
+{
+    cy.contains('node_picker').click()
+});
+When('user selects parent region node from search option',function()
+{
+    cy.get(':nth-child(3) > .gwt-TabBarItem > .gwt-Label').click()
+    cy.get("input[class='gwt-SuggestBox']").type(globalThis.storeregion)
+    cy.get(".stibo-GraphicsButton.material.SearchButton").click()
+    cy.get("button[class='stibo-GraphicsButton'] span[class='text']").click()
+});
+When('user enters <Area Support Team Name>',function()
+{
+    const random_region_admin = Math.random().toString(36).substring(2,12)
+    cy.get("[class='gwt-TextBox stibo-StateFlow-Unbound-Variable stibo-Value stibo-Value-Text mandatory']").type(String(random_region_admin))
+});
+When('user click on "Next" button',function()
+{
+    cy.get(".text").click()
+});
+Then('user should see successful message <pop-up>',function()
+{
+    cy.get("[class='portal-alert-popup-content-details__details']").then(function(msg_data)
+        {
+            const text_const = msg_data.text()
+            expect(text_const).to.includes("Your Area Support Team has been submitted")
+        })
+});
+When('user enters <Area Support Team Code> in general attributes tab',function()
+{
+    let randomnumber2 = Math.floor(Math.random()*(9))
+    globalThis.randomnumber2 = randomnumber2
+    let random_string = Math.random().toString(36).substring(2,3)
+    globalThis.random_string = random_string
+    cy.get('#Area_Support_Team_Code > .widgetAndIconsWrapper > [style="margin-right: 8px;"] > :nth-child(1) > .gwt-TextBox').type(String(globalThis.randomnumber2)+globalThis.random_string)
+});
+When('user enters <Area Support Team Type> in general attributes tab',function()
+{
+    cy.get("[class='dropdown stibo-Value validator-text mandatory-for-approval stibo-Value-Text mandatory']").select('L')
+        
+});
+When('user enters <Start Date> in general attributes tab',function()
+{
+        cy.get("div[id='Start_Date'] div[class='widgetAndIconsWrapper'] div div input[placeholder='yyyy-MM-dd']").click()
+        cy.get("[class='popupContent']").eq(1).contains("1").eq(0).click({force:true})
+      //  cy.get(":nth-child("+globalThis.randomnumber3+") > :nth-child("+globalThis.randomnumber3+") > .datePickerDay").click()
+});
+When('user enters <Assignment Start Date> in general attributes tab',function()
+{
+        cy.get("body > div:nth-child(10) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)").click()
+     //   cy.get(":nth-child("+(globalThis.randomnumber3)+") > :nth-child("+(globalThis.randomnumber3)+") > .datePickerDay").click()
+     cy.get("[class='popupContent']").contains("5").eq(0).click({force:true})
+     cy.get('.portal-alert-popup-close-box > .material-icons').click()
+
+        cy.get("div[id='End_Date'] div[class='widgetAndIconsWrapper'] div div input[placeholder='yyyy-MM-dd']").click()
+        // cy.get('.datePickerNextButton > .html-face').click()
+        // cy.get('.datePickerNextButton > .html-face').click()
+        // cy.get(":nth-child("+(globalThis.randomnumber3)+") > :nth-child("+(globalThis.randomnumber3)+") > .datePickerDay").click()
+        cy.get("[class='html-face']").eq(2).click({force:true})
+    cy.get("[class='html-face']").eq(2).click({force:true})
+    cy.get("[class='html-face']").eq(2).click({force:true})
+    cy.get("[class='html-face']").eq(2).click({force:true})
     cy.wait(2000)
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='10']").click({force:true}).find("bedrock-attribute").contains("AC1").click({force:true})
-
+    cy.get("[class='popupContent']").eq(0).contains("4").eq(0).click({force:true})
 });
-When('user enters some text field in "Price Type Description"',function()
+When('user selects Active Area Support Team Roles tab',function()
 {
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='11']").click({force:true}).find("bedrock-attribute").find("input").type("Automation_price_type",{force:true})
-
+    cy.get("div[id='stibo_tab_Active_Area_Support_Team_Roles'] div[class='tabs-panel-tab-inner'] div span[class='gwt-InlineLabel']").click()    
 });
-When('user  clicks on "Price UOM" and selects date from the given dropdown "Price UOM"',function()
+When('user click on "Add roles" select <Reference Type> and <Reference Target>',function()
 {
-    cy.get("[class='ag-cell ag-cell-not-inline-editing ag-cell-auto-height rs-cell-editable ag-cell-value ag-cell-wrap-text'][aria-colindex='12']").click({force:true}).find("bedrock-attribute").contains("HF").click({force:true})
-
+    for(let i=0;i<5;i++)
+    {
+   // cy.get("body > div:nth-child(10) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > div:nth-child(1) > i:nth-child(1)").click({force:true})
+   cy.get("[title='Create a new reference']").eq(0).click({force:true})
+   if(i==2 || i==3 || i==4)
+    {
+    cy.get(".stibo-Dropdown.FormFieldWidget").select(i)
+    cy.get('.icon > .material-icons').click()
+    cy.get("#tree_expanded_node_StaffRoot").click()
+    const webelements = cy.get("[class='treeRow ']")
+    const admin_index = Math.floor(Math.random()*30)
+    webelements.eq(admin_index).click()
+    cy.get("button[class='stibo-GraphicsButton'] div span.text").click()
+    cy.get("button[class='stibo-GraphicsButton'] div span.text").click()
+    cy.log(i)
+    }
+    }
 });
-When('user  clicks on "Product Description – Long" and enter some text value in "Enter more values here to add"',function()
+When('user selects "Assignment start date" for each role',function()
 {
-    cy.get("[title='Product Description – Long']").next().click({force:true})
-    cy.pause()
-    cy.get("[aria-labelledby='paper-input-label-40']").type("automation_test_values",{force:true})
-  // cy.get("[class='input-element'] input[autocorrect='off']")
-    cy.get("[icon='pebble-icon:action-add-fill']").click({force:true})
+    const assign_index = Math.floor(Math.random()*(globalThis.randomnumber3+5))
+    for(let k = 0;k<3;k++)
+        {
+            cy.wait(4000)
+        cy.get("td:nth-child(5)").contains("yyyy-MM-dd").eq(0).dblclick()
+        // cy.get("[class='gwt-TextBox DatePickerView']").click()
+         cy.get('.datePickerNextButton > .html-face').click({force:true})
+        // cy.get("[class='datePickerDay ']").eq(globalThis.randomnumber3).click()
+        cy.get("[class='datePickerDay ']").contains("2").eq(0).click({force:true})
+        cy.get("[class='stibo-GraphicsButton']").contains("Save").click()
+        }
+});
+When('user clicks on "Create" button',function()
+{
+    cy.get('.SubmitButton > div > .text').click()
+ 
+});
+Then('user should see successful message <pop-up> on dashboard',function()
+{ 
     cy.wait(4000)
-});
-When('user click on Save Button',function()
-{   
-    cy.get("[id='simpleButton']").contains("Save").click({force:true})
-cy.wait(8000)
-});
-When('user click on Summary tab1',function()
-{
-    cy.get("[title='Summary']").click({force:true})
-cy.wait(6000)
-});
-When('user click on Sumbit button in workflow section',function()
-{
-    cy.get("[id='buttonTextBox']").contains("Submit").click({force:true})
-    cy.wait(5000)
-});
-Then('successful message should be displayed',function()
-{
-    cy.contains("'Submit' successful").should('be.visible',"'Submit' successful")
-});
+   cy.contains("successfully submitted").should('be.visible')
+
+})
+
+
+
+
+
+
 

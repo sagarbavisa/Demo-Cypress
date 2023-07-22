@@ -27,7 +27,8 @@ module.exports = defineConfig({
   e2e: {
     
     baseUrl:"https://chick-fil-a-preprod.scloud.stibo.com",
-    specPattern:"cypress/integration/BDD/cfabdd.feature",
+   // specPattern:"cypress/integration/BDD/cfabdd.feature",
+    specPattern:"**/*test.feature",
    // specPattern:"cypress/integration/tests/CFATESTS.js",
     chromeWebSecurity:false,
     setupNodeEvents
