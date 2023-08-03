@@ -25,10 +25,14 @@ module.exports = defineConfig({
   videosFolder: 'cypress/videos',
   videoUploadOnPasses: true,
   e2e: {
-    
-    baseUrl:"https://chick-fil-a-preprod.scloud.stibo.com",
-   // specPattern:"cypress/integration/BDD/cfabdd.feature",
-    specPattern:"**/*test.feature",
+    env :
+    {
+      
+    },
+   // baseUrl:"https://chick-fil-a-preprod.scloud.stibo.com",
+    experimentalSourceRewriting : true,
+   // specPattern:"cypress/integration/tests/url.js",
+    specPattern:"cypress//integration//EnterworksAutomation//enterworks.feature",
    // specPattern:"cypress/integration/tests/CFATESTS.js",
     chromeWebSecurity:false,
     setupNodeEvents

@@ -15,5 +15,5 @@ context('Login', () => {
       expect(actual).to.have.string("Accounts Overview");
     })
   })
- 
+
 })
