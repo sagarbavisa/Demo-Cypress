@@ -29,24 +29,25 @@ When('user expands Test Repository in Content menu',function()
 });
 When('user double clicks repository name Test Product Staging',function()
 {
-    cy.wait(5000)
+    cy.wait(7000)
     cy.get(':nth-child(19) > ul > li.dynatree-lastsib > .dynatree-node > .dynatree-title').as('stage')
     cy.get('@stage').dblclick()
 });
 When('user doubleclicks a product to navigate to product details page',function()
 {
-    cy.wait(5000)
+    cy.wait(3000)
     cy.get("div[class='ew-tabs-iframe-panels'] iframe").eq(1).its('0.contentDocument').should('exist').its('body').as('product')
     cy.get('@product').find("input[type='checkbox'][class='cbox']").eq(7).dblclick()
 });
 When('user enters a DAM Image name',function()
 {
-    cy.wait(5000)
+    cy.wait(3000)
  //enter image name
  cy.get("div[class='ew-tabs-iframe-panels'] iframe").eq(1).its('0.contentDocument').should('exist').its('body').as('parentele')
- cy.wait(8000)
+ cy.wait(3000)
  cy.get('@parentele').find("[class='ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable wijmo-wijdialog'] iframe").its('0.contentDocument').should('exist').its('body').as('btn')
- cy.get('@btn').find("textarea[name='attrValues(1019592)']").type("cleanerTest7.pdf")
+ cy.get('@btn').find("textarea[name='attrValues(1019592)']").type("test5114.jpg")
+ cy.wait(2000)
 });
 
 When('user clicks on Save And Send button',function()

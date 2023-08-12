@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "DAM_LINK": "node_modules\\.bin\\cypress run --spec cypress//integration//EnterworksAutomation//enterworks.feature --headed --browser chrome"
-   
   },
   "keywords": [],
   "author": "Sagar",
@@ -22,18 +21,15 @@
     "@cucumber/gherkin": "^26.2.0",
     "@cucumber/html-formatter": "^20.3.0",
     "@cucumber/message-streams": "^4.0.1",
-    "multiple-cucumber-html-reporter": "^3.0.2",
     "@cucumber/messages": "^22.0.0",
     "@cucumber/pretty-formatter": "^1.0.0",
     "@cucumber/tag-expressions": "^5.0.1",
-    "cypress": "^10.0.0 || ^11.0.0 || ^12.0.0",
-
-    "@cypress/browserify-preprocessor": "latest",
+    "@cypress/browserify-preprocessor": "^3.0.1",
     "cucumber-json-report-formatter": "^0.1.4",
+    "cypress": "^10.0.0 || ^11.0.0 || ^12.0.0",
     "cypress-cucumber-tagging": "^1.0.3",
     "cypress-iframe": "^1.0.1",
     "jsonpath": "^1.1.1"
-
   },
   "devDependencies": {
     "@babel/parser": "^7.21.4",
@@ -45,6 +41,7 @@
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-iframe": "^1.0.1",
     "esbuild": "^0.18.14",
+    "multiple-cucumber-html-reporter": "^3.4.0",
     "webpack": "^5.80.0"
   },
   "cypress-cucumber-preprocessor": {
@@ -54,8 +51,8 @@
     ],
     "json": {
       "enabled": true,
-      "formatter": "cypress/cucumber-json-formatter.exe",
-      "output": "cypress/integration/cucumber_reports/enterwork.json"
+      "formatter": "cypress/cucumber-json-formatter.exe",                   
+      "output": "cypress//integration//cucumber_reports//enterwork.json"
     }
   },
   "peerDependencies": {
