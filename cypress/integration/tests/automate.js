@@ -68,7 +68,8 @@ cy.get("div[id='tabProfiles'] iframe").its('0.contentDocument').should('exist').
 cy.get("div[id='tabProfiles'] iframe").its('0.contentDocument').should('exist').its('body')
     .find("[id='profileEditor-modalIFrameDialog'] iframe").its('0.contentDocument').should('exist').its('body')
     .find("[id='profileAttribute-modalIFrameDialog'] iframe").its('0.contentDocument').should('exist').its('body')
-    .find("input[type='text'][id='name']").click().type("TestData")
+    .find("input[type='text'][id='name']").click().as('name')
+    cy.get('@name').type("TestData")
     cy.wait(6000)
     //Attribute Tab
     cy.get("div[id='tabProfiles'] iframe").its('0.contentDocument').should('exist').its('body')
@@ -82,13 +83,9 @@ cy.get("div[id='tabProfiles'] iframe").its('0.contentDocument').should('exist').
     .find("[id='profileAttribute-modalIFrameDialog'] iframe").its('0.contentDocument').should('exist').its('body')
      .find("[type='submit'][value='OK']").click()
         cy.wait(2000)
-   // Click on Attributes page in "Ok" button
-    //  cy.get("div[id='tabProfiles'] iframe").its('0.contentDocument').should('exist').its('body')
-    //   .find("[id='profileEditor-modalIFrameDialog']  iframe").its('0.contentDocument').should('exist').its('body')
-    //   .find("[id='profileAttribute-modalIFrameDialog']  iframe").its('0.contentDocument').should('exist').its('body')
-    //    .find("[type='submit'][value='OK']").click()
+   
        cy.wait(6000)
-//Profile File incompeted .....
+
     // TAXOMONY
     cy.get("#Taxonomy").click()
     cy.wait(4000)
@@ -128,32 +125,26 @@ cy.get("div[id='tabProfiles'] iframe").its('0.contentDocument').should('exist').
     //click on next button
     cy.new_nest_frame("div[id='tabTaxonomy'] iframe", "[id='codeset-editor'] iframe", "[name='Next']", "", "click")
       cy.wait(4000)
+      cy.log("Before Add button ")
+      cy.pause()
+
       //click on add button in  Detaileditor
       // cy.new_nest_frame("div[id='tabTaxonomy'] iframe", "[id='codeset-editor'] iframe", "[name='Add']", "", "click")
       cy.get("div[id='tabTaxonomy'] iframe").its('0.contentDocument').should('exist').its('body')
         .find("[id='codeset-editor'] iframe").its('0.contentDocument').should('exist').its('body')
-        .find("[name='Add']").click().then(()=>
-        {
-            const frames = window.frames;
-            console.log(frames[0].document)
-        })
-
-// Wait for the pop-up to open (you may need to adjust the selector based on your application)
-// cy.window().its('length').should('be.gt', 1);
-// // Get the URL of the pop-up window
-// cy.window().then((win) => {
-//   const popupUrl = win.location.href;
-//   cy.log('Pop-up URL:', popupUrl);
-//   cy.wait(5000)
-//   // Interact with elements inside the pop-up using cy.get() with the appropriate selector
-//   // For example, if you want to type into an input field with a specific ID inside the pop-up:
- 
-//   cy.get("input[type='text'][name='code']").type('Hello, Popup!');
- 
-// window.document.querySelector("input[type='text'][name='code']").value="supersagar"
-//});
-        cy.wait(4000)
+        .find("[name='Add']").as('addbtn')
+        cy.log("After Add button ")
+        cy.window().then((win) => {
+            const orig = win.open
+          
+            win.open = function (url, target, features) {
+              return orig.call(this, url, '_self', features)
+             
+            }
+          })
+          cy.get('@addbtn').click()
         cy.pause()
+
 
     })
 })

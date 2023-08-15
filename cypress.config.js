@@ -29,9 +29,9 @@ module.exports = defineConfig({
     },
    // baseUrl:"https://chick-fil-a-preprod.scloud.stibo.com",
     experimentalSourceRewriting : true,
-    defaultCommandTimeout : 12000,
-   // specPattern:"cypress/integration/tests/url.js",
-    specPattern:"cypress//integration//EnterworksAutomation//enterworks.feature",
+    defaultCommandTimeout : 10000,
+   specPattern:"cypress/integration/tests/*.js",
+  //  specPattern:"cypress//integration//EnterworksAutomation//enterworks.feature",
    // specPattern:"cypress/integration/tests/CFATESTS.js",
     chromeWebSecurity:false,
     setupNodeEvents
