@@ -1,23 +1,21 @@
-import { Given, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Before, Given, Then } from "@badeball/cypress-cucumber-preprocessor";
 import { When } from "@badeball/cypress-cucumber-preprocessor";
-Given('User is on Login page',()=>
+import 'cypress-data-session';
+import "cypress-localstorage-commands";
+
+Before(() => {
+   
+        cy.visit("http://67.22.105.214:8090/webcm/")
+        cy.get('#username').type('amhatre')
+        cy.get('#password').type('amhatre')
+        cy.get('#login').click()
+        cy.saveLocalStorage()
+        
+  })
+Given('After succesfull login user click on MainHomeSplitter button',function()
 {
-    cy.visit("http://67.22.105.214:8090/webcm/login.do;jsessionid=EF7970A56F17FF51234A4FF05CB50D9F")
-});
-When('user Enter Username',function()
-{
-    cy.get('#username').type('amhatre')
-});
-When('user Enter Password',function()
-{
-    cy.get('#password').type('amhatre')
-});
-When('user click on Login button',function()
-{
-    cy.get('#login').click()
-});
-When('after succesfull login user click on MainHomeSplitter button',function()
-{
+    
+   
     cy.wait(2000)
     cy.get("div[role='button'] span[class='ui-icon ui-icon-triangle-1-e']").click()
 });
@@ -64,6 +62,13 @@ When('user click on OK button',function()
 .find("[class='ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable wijmo-wijdialog'] iframe").its('0.contentDocument').should('exist').its('body').as('okbtn')
 cy.get('@okbtn').find("[class='ui-dialog-buttonset']").contains("OK").click({force:true})
 });
+Given('User is on Enterworks dashboard',()=>
+{
+    
+    cy.get("div[role='button'] span[class='ui-icon ui-icon-triangle-1-e']").click()
+});
+
+
 When('user clicks on checkbox of a product',function()
 {
     cy.wait(3000)

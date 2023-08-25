@@ -4,7 +4,7 @@
   "description": "Demo automation project",
   "main": "index.js",
   "scripts": {
-    "DAM_LINK": "node_modules\\.bin\\cypress run --spec cypress//integration//EnterworksAutomation//enterworks.feature --headed --browser chrome"
+    "DAM_LINK": "node_modules\\.bin\\cypress run --spec cypress//integration//EnterworksWorkflow//ew_workflow.feature --headed --browser chrome"
   },
   "keywords": [],
   "author": "Sagar",
@@ -37,9 +37,14 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@cypress/browserify-preprocessor": "^3.0.2",
     "@cypress/webpack-preprocessor": "^5.17.0",
-    "cypress": "^12.17.1",
+    "@faker-js/faker": "^8.0.2",
+    "cypress": "^12.17.4",
     "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-data-session": "^2.7.0",
     "cypress-iframe": "^1.0.1",
+    "cypress-localstorage-commands": "^2.2.4",
+    "cypress-network-idle": "^1.14.2",
+    "cypress-playwright": "^1.0.0",
     "esbuild": "^0.18.14",
     "multiple-cucumber-html-reporter": "^3.4.0",
     "webpack": "^5.80.0"
@@ -47,11 +52,11 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": [
-      "cypress/integration/EnterworksAutomation/enterworks/enterworks.js"
+      "cypress//integration//EnterworksWorkflow//ew_workflow//Eworkflow.js"
     ],
     "json": {
       "enabled": true,
-      "formatter": "cypress/cucumber-json-formatter.exe",                   
+      "formatter": "cypress/cucumber-json-formatter.exe",
       "output": "cypress//integration//cucumber_reports//enterwork.json"
     }
   },
