@@ -4,7 +4,7 @@
   "description": "Demo automation project",
   "main": "index.js",
   "scripts": {
-    "DAM_LINK": "node_modules\\.bin\\cypress run --spec cypress//integration//EnterworksWorkflow//ew_workflow.feature --headed --browser chrome"
+    "DAM_LINK": "node_modules\\.bin\\cypress run --spec cypress//Riversand//timken.feature --headed --browser chrome"
   },
   "keywords": [],
   "author": "Sagar",
@@ -52,7 +52,8 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": [
-      "cypress//integration//EnterworksWorkflow//ew_workflow//Eworkflow.js"
+      "cypress//integration//EnterworksWorkflow//ew_workflow//Eworkflow.js",
+      "cypress//Riversand//timken//timken.js"
     ],
     "json": {
       "enabled": true,

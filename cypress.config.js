@@ -27,16 +27,18 @@ module.exports = defineConfig({
   
     env :
     {
-      
+
     },
    // baseUrl:"https://pivotree-sb01.mdm.stibosystems.com/",
-    experimentalSourceRewriting : true,
-  
-    defaultCommandTimeout : 14000,
+    //experimentalSourceRewriting : true,
+
+   // defaultCommandTimeout : 14000,
     pageLoadTimeout : 200000,
-    //specPattern:"cypress/integration/tests/*.js",
+    includeShadowDom:true,
+   // specPattern:"cypress/integration/tests/*.js",
    // specPattern:"cypress/integration/EnterworksAutomation/shortdesc.feature",
-     specPattern:"cypress//integration//EnterworksWorkflow//ew_workflow.feature",
+   //  specPattern:"cypress//integration//EnterworksWorkflow//ew_workflow.feature",
+   specPattern:"cypress/Riversand/timken.feature",
    // specPattern:"cypress/integration/tests/CFATESTS.js",
     chromeWebSecurity:false,
    // baseUrl : "http://67.22.105.214:8090/webcm/login.do;jsessionid=EF7970A56F17FF51234A4FF05CB50D9F",
